@@ -6,6 +6,9 @@ import salesRouter from "./routes/sale.route.js";
 
 const app = express();
 
+//* para express usar json
+app.use(express.json());
+
 //* Redirecionando todos as requisicoes para client.route
 app.use("/client", clientsRouter);
 app.use("/product", productsRouter);
