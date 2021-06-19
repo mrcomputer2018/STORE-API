@@ -47,6 +47,15 @@ app.use("/product", productsRouter);
 app.use("/supplier", suppliersRouter);
 app.use("/sale", salesRouter);
 
+//* Configurando o tratamento do erro
+app.use((err, req, res) => {
+    //* Tempplate string de erro c/ metodo url mensagem de erro
+    logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
+    //* retorno pro usuario um erro
+    res.status(400).send({ error : err.message });
+});
+
+//* Iniciando o servidor na porta
 app.listen(3000, () => {
     console.log("API Inicializada");
 });
