@@ -48,7 +48,7 @@ app.use("/supplier", suppliersRouter);
 app.use("/sale", salesRouter);
 
 //* Configurando o tratamento do erro
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
     //* Tempplate string de erro c/ metodo url mensagem de erro
     logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
     //* retorno pro usuario um erro
