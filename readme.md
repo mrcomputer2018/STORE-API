@@ -10,3 +10,7 @@
 
 ### npm install --save winston
 - para gravar logs da api
+
+### nodemon.json
+- Inserindo configuracao para ignorar a aletrecaoo dos
+arquivos json e nao reiniciar a todo momento
