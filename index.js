@@ -6,6 +6,7 @@ import productsRouter from "./routes/product.route.js";
 import suppliersRouter from "./routes/supplier.route.js";
 import salesRouter from "./routes/sale.route.js";
 
+//* Destruction winston
 const { combine, timestamp, label, printf } = winston.format;
 
 const myFormat = printf(({
