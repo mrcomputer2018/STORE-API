@@ -1,6 +1,6 @@
-
-
 //? Controller vai fazer as validacoes da requisicao
+import ClientService from "../services/client.service.js";
+
 async function createClient(req, res, next) {
     try {
         let client = req.body;
@@ -10,7 +10,8 @@ async function createClient(req, res, next) {
             //* Informa mensagem de erro pro usuario
             throw new Error("Name, cpf, phone e address sao obrigatorios");
         }
-        // client.service
+        //* Cria no banco de dados e retorna o cliente criado
+        res.send(await ClientService.createClient(client));
         //* Devolvendo a informacao pro usuario
         res.send({});
 
