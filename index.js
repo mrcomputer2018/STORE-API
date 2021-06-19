@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import winston from "winston";
 import clientsRouter from "./routes/client.route.js";
 import productsRouter from "./routes/product.route.js";
 import suppliersRouter from "./routes/supplier.route.js";
