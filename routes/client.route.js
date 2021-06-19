@@ -1,3 +1,5 @@
+//? Routesr envia as requisicoes para controller
+
 import express from "express";
 
 //* Criando o roteador para receber as requisicoes
