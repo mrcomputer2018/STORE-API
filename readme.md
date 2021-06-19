@@ -4,3 +4,5 @@
 - inserir type: module no final do arquivo
 
 ### npm install --save express
+
+### npm install --save cors
