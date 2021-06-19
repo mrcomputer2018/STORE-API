@@ -1,4 +1,4 @@
-async function insertClient() {
+async function insertClient(client) {
 
 }
 
