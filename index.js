@@ -24,7 +24,7 @@ global.logger = winston.createLogger({
     level: "silly",
     transports: [
         new (winston.transports.Console)(),
-        new (winston.transports.File)({ filename: "store-api.log"})
+        new (winston.transports.File)({ filename: "store'-api.log"})
     ],
     format: combine(
         label({ label: "store-api"}),
