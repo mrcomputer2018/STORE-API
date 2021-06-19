@@ -27,7 +27,7 @@ global.logger = winston.createLogger({
         new (winston.transports.File)({ filename: "my-bank-api.log"})
     ],
     format: combine(
-        label({ label: "my-bank-api"}),
+        label({ label: "store-api"}),
         timestamp(),
         myFormat
     )
