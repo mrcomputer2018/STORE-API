@@ -21,3 +21,7 @@ async function createClient(req, res, next) {
         next(err);
     }
 }
+
+export default {
+    createClient
+}
