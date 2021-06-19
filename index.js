@@ -3,7 +3,7 @@ import clientsRouter from "./routes/client.route.js";
 
 const app = express();
 
-//* Redirecionando todos as requisicoes para client.rooute
+//* Redirecionando todos as requisicoes para client.route
 app.use("/client", clientsRouter);
 
 app.listen(3000, () => {
