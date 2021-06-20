@@ -14,3 +14,6 @@
 ### nodemon.json
 - Inserindo configuracao para ignorar a aletrecaoo dos
 arquivos json e nao reiniciar a todo momento
+
+### npm install --save pg
+- instalando biblioteca postGre
