@@ -5,7 +5,8 @@ async function insertClient(client) {
     const conn = await connect();
 
     //* Montando o SQL que executaremos
-    const sql = "INSERT INTO clients (name, cpf, phone, email, address) VALUES ($1, $2, $3, $4, $5)";
+    //* Returning para retornar o que eu quero
+    const sql = "INSERT INTO clients (name, cpf, phone, email, address) VALUES ($1, $2, $3, $4, $5) RETURNING *";
     //* Evitando o ataque de sql injection
     const values = [client.name, client.cpf, client.phone, client.email, client.address];
 
