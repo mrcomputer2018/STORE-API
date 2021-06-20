@@ -11,7 +11,8 @@ async function insertClient(client) {
     const values = [client.name, client.cpf, client.phone, client.email, client.address];
 
     const res = await conn.query(sql, values);
-    return {};
+    
+    return res.rows[0];
 }
 
 export default {
