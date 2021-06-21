@@ -55,7 +55,7 @@ async function getClient(id) {
 
         const res = await conn.query(sql, values);
 
-         return res.row[0];
+         return res.rows[0];
 
     } catch (err) {
         throw err;
