@@ -10,6 +10,7 @@ router.post("/", ClientController.createClient);
 
 //* Rota GET
 router.get("/", ClientController.getClients);
+router.get("/:id", ClientController.getClient);
 
 //* Exportando o roteador
 export default router;
