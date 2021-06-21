@@ -1,4 +1,5 @@
 //? Controller vai fazer as validacoes da requisicao
+import { loggers } from "winston";
 import ClientService from "../services/client.service.js";
 
 async function createClient(req, res, next) {
@@ -23,7 +24,20 @@ async function createClient(req, res, next) {
     }
 }
 
+async function getClients(req, res,next) {
+    try {
+        //* Devolvendo pro cliente
+        res.send(await ClientService.getClients());
+
+        loggers.info("GET /clients");
+
+    } catch (err) {
+        next(err);
+    }
+}
+
 //* Exportacoes
 export default {
-    createClient
+    createClient,
+    getClients
 }
