@@ -1,5 +1,4 @@
 //? Controller vai fazer as validacoes da requisicao
-import { loggers } from "winston";
 import ClientService from "../services/client.service.js";
 
 async function createClient(req, res, next) {
@@ -17,7 +16,7 @@ async function createClient(req, res, next) {
         res.send({});
 
         //* convertendo em string e devolvendo no log o body
-        loggers.info(`POST /client - ${JSON.stringify(client)}`);
+        logger.info(`POST /client - ${JSON.stringify(client)}`);
     } catch (err) {
         //* Jogando ppara o proximo middleware
         next(err);
@@ -29,7 +28,7 @@ async function getClients(req, res,next) {
         //* Devolvendo pro cliente
         res.send(await ClientService.getClients());
 
-        loggers.info("GET /clients");
+        logger.info("GET /clients");
 
     } catch (err) {
         next(err);

@@ -47,8 +47,6 @@ async function getClients () {
 
 export default {
     insertClient,
-    getClients,
-    getClient,
-    updateClient,
-    deleteClient
+    getClients
+    
 }
