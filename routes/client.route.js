@@ -8,5 +8,8 @@ const router = express.Router();
 //* Rota POST
 router.post("/", ClientController.createClient);
 
+//* Rota GET
+router.get("/", ClientController.getClients);
+
 //* Exportando o roteador
 export default router;
