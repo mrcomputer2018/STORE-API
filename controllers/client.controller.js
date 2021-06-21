@@ -37,10 +37,8 @@ async function getClients(req, res,next) {
 
 async function getClient(req, res, next) {
     try {
-        let id = req.body.id;
+        res.send(await ClientService.getClient(req.params.id));
 
-        res.send(await ClientService.getClient(id));
-        
         logger.info("GET /Client/:id");
 
     } catch (err) {
