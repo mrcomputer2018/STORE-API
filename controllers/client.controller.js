@@ -35,8 +35,22 @@ async function getClients(req, res,next) {
     }
 }
 
+async function getClient(req, res, next) {
+    try {
+        let id = req.body.id;
+
+        res.send(await ClientService.getClient(id));
+        
+        logger.info("GET /Client/:id");
+
+    } catch (err) {
+        next(err);
+    }
+}
+
 //* Exportacoes
 export default {
     createClient,
-    getClients
+    getClients,
+    getClient
 }
