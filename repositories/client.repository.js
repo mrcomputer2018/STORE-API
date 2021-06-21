@@ -36,7 +36,7 @@ async function getClients () {
         return res.rows;
 
     } catch (error) {
-
+       
         throw err;
 
     } finally {
@@ -45,8 +45,29 @@ async function getClients () {
     }
 }
 
+async function getClient(id) {
+    const conn = await connect();
+
+    try {
+        const sql = "SLECT name FROM clients WHERE client_id = $1";
+
+        const values = [id];
+
+        const res = await conn.query(sql, values);
+
+         return res.row[0];
+         
+    } catch (err) {
+        throw err;
+
+    } finally {
+        conn.release();
+
+    }
+}
+
 export default {
     insertClient,
-    getClients
-    
+    getClients,
+    getClient    
 }
