@@ -49,7 +49,7 @@ async function getClient(id) {
     const conn = await connect();
 
     try {
-        const sql = "SELECT name FROM clients WHERE client_id = $1";
+        const sql = "SELECT * FROM clients WHERE client_id = $1";
 
         const values = [id];
 
