@@ -24,7 +24,31 @@ async function insertClient(client) {
     }
 }
 
+//* Metodo buscar clientes
+async function getClients () {
+    const conn = await connect();
+
+    try {
+        const sql = "SELECT * FROM clients";
+        
+        const res = await conn.query(sql);
+        //* pegando toda a lista de clientes
+        return res.rows;
+
+    } catch (error) {
+
+        throw err;
+
+    } finally {
+
+        conn.release();
+    }
+}
 
 export default {
-    insertClient
+    insertClient,
+    getClients,
+    getClient,
+    updateClient,
+    deleteClient
 }
