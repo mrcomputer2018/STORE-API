@@ -24,7 +24,10 @@ async function deleteProduct(id) {
 }
 
 async function updateProduct(product) {
-    return await ProductRepository.updateProduct(product);
+    if(await SupplierReposytory.getSupplier(product.supplier_id)) {
+        return await ProductRepository.updateProduct(product);
+    }
+    throw new Error("O supplier_id informado não existe");
 }
 
 export default {
