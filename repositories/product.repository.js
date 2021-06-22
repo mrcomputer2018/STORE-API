@@ -32,7 +32,7 @@ async function getProducts () {
         const sql = "SELECT * FROM products";
         
         const res = await conn.query(sql);
-        //* pegando toda a lista de fornecedores
+        //* pegando toda a lista de produtos
         return res.rows;
 
     } catch (error) {
