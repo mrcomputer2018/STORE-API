@@ -7,7 +7,7 @@ async function insertSupplier(supplier) {
     try {
         //* Montando o SQL que executaremos
         //* Returning para retornar o que eu quero
-        const sql = "INSERT INTO suppliers (name, cpnj, phone, email, address) VALUES ($1, $2, $3, $4, $5) RETURNING *";
+        const sql = "INSERT INTO suppliers (name, cnpj, phone, email, address) VALUES ($1, $2, $3, $4, $5) RETURNING *";
         //* Evitando o ataque de sql injection
         const values = [supplier.name, supplier.cnpj, supplier.phone, supplier.email, supplier.address];
         //* Guardadndo em res o objeto alterado
