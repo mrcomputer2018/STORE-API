@@ -75,6 +75,7 @@ async function deleteClient(id) {
         const values = [id];
 
         await conn.query(sql, values);
+        //* nao coloca RES pois nao esta esperando nenhum retorno
 
     } catch (err) {
         throw err;
