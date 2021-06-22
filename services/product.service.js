@@ -1,4 +1,4 @@
-//? Service faz o tratamentoo da regra de negocio
+//? Service faz o tratamentoo da regra de negocio / validacoes
 import ProductRepository from "../repositories/product.repository.js";
 import SupplierReposytory from "../repositories/supplier.repository.js";
 
