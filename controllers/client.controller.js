@@ -37,9 +37,20 @@ async function getClients(req, res,next) {
 
 async function getClient(req, res, next) {
     try {
-        res.send(await ClientService.getClient(req.params.id));
-
+        await ClientService.getClient(req.params.id);
+        //* termina sem dar retorno
+        res.end();
         logger.info("GET /Client/:id");
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function deleteClient(req, res, next) {
+    try {
+        res.send(await ClientService.deleteClient(req.params.id));
+        logger.info("DELETE /client/:id")
 
     } catch (err) {
         next(err);
@@ -50,5 +61,6 @@ async function getClient(req, res, next) {
 export default {
     createClient,
     getClients,
-    getClient
+    getClient,
+    deleteClient
 }
