@@ -85,7 +85,7 @@ async function deleteClient(id) {
     }
 } 
 
-async function updateClient() {
+async function updateClient(client) {
     const conn = await connect();
 
     try {
