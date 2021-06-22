@@ -12,5 +12,8 @@ router.post("/", ClientController.createClient);
 router.get("/", ClientController.getClients);
 router.get("/:id", ClientController.getClient);
 
+//* Rota DELETE
+router.delete("/:id", ClientController.deleteClient);
+
 //* Exportando o roteador
 export default router;
