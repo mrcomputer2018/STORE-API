@@ -3,7 +3,7 @@ import ClientService from "../services/client.service.js";
 
 async function createClient(req, res, next) {
     try {
-        letclient = req.body;
+        let client = req.body;
 
         //* validacoes
         if (!client.name || !client.cpf || !client.phone || !client.email || !client.address) {
