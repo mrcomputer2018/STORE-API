@@ -1,9 +1,13 @@
 //? Service faz o tratamentoo da regra de negocio
 import ProductRepository from "../repositories/product.repository.js";
+import SupplierReposytory from "../repositories/supplier.repository.js";
 
 async function createProduct(product) {
-    //* cria e retorna o objeto
-    return await ProductRepository.insertProduct(product);
+    if(await SupplierReposytory.getSupplier(product.supplier_id)) {
+        //* cria e retorna o objeto
+        return await ProductRepository.insertProduct(product);
+    }
+    throw new Error("O supplier_id informado não existe");
 }
 
 async function getProducts() {
