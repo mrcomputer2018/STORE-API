@@ -6,9 +6,9 @@ async function createProduct(req, res, next) {
         let product = req.body;
 
         //* validacoes
-        if (!product.name || !product.descripption || !product.value || !product.email || !product.supplier_id) {
+        if (!product.name || !product.descripption || !product.value || !product.stock || !product.supplier_id) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Name, descripption, value e supplier_id sao obrigatorios");
+            throw new Error("Name, descripption, value, stock e supplier_id sao obrigatorios");
         }
         //* Cria no banco de dados e retorna o Producte criado
         product = await ProductService.createProduct(product);
