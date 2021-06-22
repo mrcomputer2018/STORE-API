@@ -3,7 +3,7 @@ import ClientService from "../services/client.service.js";
 
 async function createClient(req, res, next) {
     try {
-        let client = req.body;
+        letclient = req.body;
 
         //* validacoes
         if (!client.name || !client.cpf || !client.phone || !client.email || !client.address) {
@@ -11,10 +11,8 @@ async function createClient(req, res, next) {
             throw new Error("Name, cpf, phone e address sao obrigatorios");
         }
         //* Cria no banco de dados e retorna o cliente criado
-        res.send(await ClientService.createClient(client));
-        //* Devolvendo a informacao pro usuario
-        res.send({});
-
+        client = await ClientService.createClient(client);
+        res.send(client);
         //* convertendo em string e devolvendo no log o body
         logger.info(`POST /client - ${JSON.stringify(client)}`);
     } catch (err) {
@@ -57,10 +55,30 @@ async function deleteClient(req, res, next) {
     }
 }
 
+async function updateClient(req, res, next) {
+    try {
+        let client = req.body;
+
+        if (!client.client_id || !client.name || !client.cpf || !client.phone || !client.email || !client.address) {
+            //* Informa mensagem de erro pro usuario
+            throw new Error("Client_id, name, cpf, phone e address sao obrigatorios");
+        }
+       
+        client = await ClientService.updateClient(client);
+        res.send(client);
+        
+        //* convertendo em string e devolvendo no log o body
+        logger.info(`PUT /client - ${JSON.stringify(client)}`);
+    } catch (err) {
+        next(err);
+    }
+}
+
 //* Exportacoes
 export default {
     createClient,
     getClients,
     getClient,
-    deleteClient
+    deleteClient,
+    updateClient
 }
