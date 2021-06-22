@@ -6,7 +6,7 @@ async function createProduct(req, res, next) {
         let product = req.body;
 
         //* validacoes
-        if (!product.name || !product.descripption || !product.value || !product.stock || !product.supplier_id) {
+        if (!product.name || !product.description || !product.value || !product.stock || !product.supplier_id) {
             //* Informa mensagem de erro pro usuario
             throw new Error("Name, descripption, value, stock e supplier_id sao obrigatorios");
         }
@@ -59,7 +59,7 @@ async function updateProduct(req, res, next) {
     try {
         let product = req.body;
 
-        if (!product.product_id || !product.name || !product.descripption || !product.value || !product.email || !product.supplier_id) {
+        if (!product.product_id || !product.name || !product.description || !product.value || !product.stock || !product.supplier_id) {
             //* Informa mensagem de erro pro usuario
             throw new Error("Product_id, name, descripption, value e supplier_id sao obrigatorios");
         }
