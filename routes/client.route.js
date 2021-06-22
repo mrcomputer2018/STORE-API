@@ -15,5 +15,8 @@ router.get("/:id", ClientController.getClient);
 //* Rota DELETE passando a funcao como parametro
 router.delete("/:id", ClientController.deleteClient);
 
+//* Rota PUT
+router.put("/", ClientController.updateClient);
+
 //* Exportando o roteador
 export default router;
