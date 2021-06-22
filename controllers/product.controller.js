@@ -1,5 +1,5 @@
 //? Controller vai fazer as validacoes da requisicao
-import ProductService from "../services/supplier.service.js";
+import ProductService from "../services/product.service.js";
 
 async function createProduct(req, res, next) {
     try {
