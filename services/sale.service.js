@@ -41,9 +41,9 @@ async function getSales(productId) {
     if (productId) {
         return await SaleRepository.getSalesByProductId(productId);
     }
-    else {
-        return await SaleRepository.getSales();
-    }
+    
+    return await SaleRepository.getSales();
+   
 }
 
 async function getSale(id) {
