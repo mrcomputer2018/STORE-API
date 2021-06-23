@@ -7,15 +7,17 @@ async function createSale(sale) {
     const errors = [];
 
     //* Se nao existir o Client_id
-    if(!await ClientReposytory.getClient(sale.client_id)) {
+    if(!await ClientRepository.getClient(sale.client_id)) {
         errors.push("O Client_id informado não existe");
     }
 
     if (!await ProductRepository.getProduct(sale.product_id)) {
         errors.push("O Product_id informado nao existe");
     }
-    
-    throw new Error(errors);
+    //* Se tiver error
+    if (errors) {
+        throw new Error(errors);
+    }
     
     //* cria e retorna o objeto
     return await SaleRepository.insertSale(sale);
