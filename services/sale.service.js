@@ -20,7 +20,7 @@ async function createSale(sale) {
     //* Validacao de estoque
     if(product.stock > 0) {
         //* cria e retorna o objeto
-        const sale =  await SaleRepository.insertSale(sale);
+        sale =  await SaleRepository.insertSale(sale);
         product.stock--;
         await ProductRepository.updateProduct(product);
         return sale;
