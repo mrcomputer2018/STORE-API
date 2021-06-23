@@ -10,7 +10,7 @@ async function createSale(sale) {
     }
 
     if (!await ProductRepository.getProduct(sale.product_id)) {
-        throw new Error("O Produto informado nao existe");
+        throw new Error("O Product_id informado nao existe");
     }
     
     //* cria e retorna o objeto
