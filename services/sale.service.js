@@ -15,8 +15,9 @@ async function createSale(sale) {
         errors.push("O Product_id informado nao existe");
     }
     //* Se tiver error
-    if (errors) {
-        throw new Error(errors);
+   if (errors.length !== 0) {
+       //* Mandando para index.js o erro
+       throw errors;
     }
     
     //* cria e retorna o objeto
