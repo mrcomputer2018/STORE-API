@@ -38,7 +38,7 @@ async function createSale(sale) {
 }
 
 async function getSales(productId) {
-    if (productId) {
+    if(productId){
         return await SaleRepository.getSalesByProductId(productId);
     }
     
