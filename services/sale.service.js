@@ -4,14 +4,18 @@ import ClientReposytory from "../repositories/client.repository.js";
 import ProductRepository from "../repositories/product.repository.js";
 
 async function createSale(sale) {
+    const errors = [];
+
     //* Se nao existir o Client_id
     if(!await ClientReposytory.getClient(sale.client_id)) {
-        throw new Error("O Client_id informado não existe");
+        errors.push("O Client_id informado não existe");
     }
 
     if (!await ProductRepository.getProduct(sale.product_id)) {
-        throw new Error("O Product_id informado nao existe");
+        errors.push("O Product_id informado nao existe");
     }
+    
+    throw new Error(errors);
     
     //* cria e retorna o objeto
     return await SaleRepository.insertSale(sale);
