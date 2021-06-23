@@ -35,10 +35,8 @@ async function getSales(req, res,next) {
 
 async function getSale(req, res, next) {
     try {
-        await SaleService.getSale(req.query.product_id);
-        //* termina sem dar retorno
-        res.end();
-        logger.info("GET /sale/:id");
+        res.send(await SaleService.getSale(req.query.product_id));
+        logger.info("GET /sale");
 
     } catch (err) {
         next(err);
