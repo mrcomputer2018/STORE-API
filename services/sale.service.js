@@ -31,9 +31,9 @@ async function createSale(sale) {
 
     //* Se tiver error
     if (errors.length !== 0) {
-    //* Mandando para index.js o erro
-    throw errors;
- }
+        //* Mandando para index.js o erro
+        throw errors;
+    }
     
 }
 
@@ -46,8 +46,30 @@ async function getSale(id) {
 }
 
 async function deleteSale(id) {
-    //* nao coloca return pois nao esta esperando nenhum retorno
-    await SaleRepository.deleteSale(id);
+    const errors = [];
+    const sale = await SaleRepository.getSale(id);
+
+    if (sale) {
+        //* Pegar oo produto para manipular o estoque
+        const product = await ProductRepository.getProduct(sale.product_id);
+        //* nao coloca return pois nao esta esperando nenhum retorno 
+        //* exclusao da venda
+        await SaleRepository.deleteSale(id);
+        product.stock++;
+        //* Atualiza o prooduto em estoque
+        await ProductRepository.updateProduct(product);
+    }
+    else {
+        errors.push("Este sale_id não existe.");
+
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+    }
+
+    
+
 }
 
 async function updateSale(sale) {
