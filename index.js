@@ -49,12 +49,15 @@ app.use("/sale", salesRouter);
 
 //* Configurando o tratamento do erro
 app.use((err, req, res, next) => {
-    //* Tempplate string de erro c/ metodo url mensagem de erro
-    logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
+    
     //* retorno pro usuario um erro
     if(err.message) {
+        //* Tempplate string de erro c/ metodo url mensagem de erro
+        logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
         res.status(400).send({ error: err.message });
     } else {
+        //* Tempplate string de erro c/ metodo url mensagem de erro
+        logger.error(`${req.method} ${req.baseUrl} - ${err}`)
         res.status(400).send({ error: err });
     }
     
