@@ -1,14 +1,20 @@
 //? Service faz o tratamentoo da regra de negocio / validacoes
 import SaleRepository from "../repositories/sale.repository.js";
 import ClientReposytory from "../repositories/client.repository.js";
-import ProductReposytory from "../repositories/product.repository.js";
+import ProductRepository from "../repositories/product.repository.js";
 
 async function createSale(sale) {
-    if(await SupplierReposytory.getSupplier(sale.supplier_id)) {
-        //* cria e retorna o objeto
-        return await SaleRepository.insertSale(sale);
+    //* Se nao existir o Client_id
+    if(!await ClientReposytory.getClient(sale.client_id)) {
+        throw new Error("O Client_id informado não existe");
     }
-    throw new Error("O supplier_id informado não existe");
+
+    if (!await ProductRepository.getProduct(sale.product_id)) {
+        throw new Error("O Produto informado nao existe");
+    }
+    
+    //* cria e retorna o objeto
+    return await SaleRepository.insertSale(sale);
 }
 
 async function getSales() {
