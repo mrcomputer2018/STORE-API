@@ -16,17 +16,25 @@ async function createSale(sale) {
     if (!product) {
         errors.push("O Product_id informado nao existe");
     }
-    //* Se tiver error
-   if (errors.length !== 0) {
-       //* Mandando para index.js o erro
-       throw errors;
+   
+    //* Validacao de estoque
+    if(product.stock > 0) {
+        //* cria e retorna o objeto
+        const sale =  await SaleRepository.insertSale(sale);
+        product.stock--;
+        await ProductRepository.updateProduct(product);
+        return sale;
+    }
+    else {
+        errors.push("Estoque insuficiente");
     }
 
-    //* Validacao de estoque
-    const product = ProductRepository.getProduct(sale.product_id);
+    //* Se tiver error
+    if (errors.length !== 0) {
+    //* Mandando para index.js o erro
+    throw errors;
+ }
     
-    //* cria e retorna o objeto
-    return await SaleRepository.insertSale(sale);
 }
 
 async function getSales() {
