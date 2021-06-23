@@ -1,6 +1,6 @@
 //? Service faz o tratamentoo da regra de negocio / validacoes
 import SaleRepository from "../repositories/sale.repository.js";
-import ClientReposytory from "../repositories/client.repository.js";
+import ClientRepository from "../repositories/client.repository.js";
 import ProductRepository from "../repositories/product.repository.js";
 
 async function createSale(sale) {

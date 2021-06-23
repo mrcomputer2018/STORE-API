@@ -52,7 +52,12 @@ app.use((err, req, res, next) => {
     //* Tempplate string de erro c/ metodo url mensagem de erro
     logger.error(`${req.method} ${req.baseUrl} - ${err.message}`)
     //* retorno pro usuario um erro
-    res.status(400).send({ error : err.message });
+    if(err.message) {
+        res.status(400).send({ error: err.message });
+    } else {
+        res.status(400).send({ err });
+    }
+    
 });
 
 //* Iniciando o servidor na porta
