@@ -9,7 +9,7 @@ async function connect() {
        connectionString: "postgres://mgkwxtyu:TAKB4CEoG5--tuAxliHoM7wL0-Ja1ZW7@batyr.db.elephantsql.com/mgkwxtyu"
     })
     //* Colocando como global para nao criar varios pools
-    // * a palicacao ficar lenta
+    // * a aplicacao nao ficar lenta
     global.connection = pool;
     return pool.connect();
 }
