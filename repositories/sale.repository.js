@@ -49,8 +49,8 @@ async function getSalesByProductId(productId) {
     const conn = await connect();
 
     try {
-        const sql = "SELECT * FROM sales WHERE product_id =$1";
-        const values = [product_id];
+        const sql = "SELECT * FROM sales WHERE product_id = $1";
+        const values = [productId];
 
         const res = await conn.query(sql, values);
         //* pegando toda a lista de produtos
