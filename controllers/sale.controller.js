@@ -24,7 +24,7 @@ async function createSale(req, res, next) {
 async function getSales(req, res,next) {
     try {
         //* Devolvendo pro cliente
-        res.send(await SaleService.getSales());
+        res.send(await SaleService.getSales(req.query.product_id));
 
         logger.info("GET /sales");
 
@@ -35,8 +35,10 @@ async function getSales(req, res,next) {
 
 async function getSale(req, res, next) {
     try {
-        res.send(await SaleService.getSale(req.query.product_id));
-        logger.info("GET /sale");
+        await SaleService.getSale(req.params.id);
+        //* termina sem dar retorno
+        res.end();
+        logger.info("GET /sale/:id");
 
     } catch (err) {
         next(err);
