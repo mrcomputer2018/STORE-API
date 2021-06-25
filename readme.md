@@ -17,3 +17,6 @@ arquivos json e nao reiniciar a todo momento
 
 ### npm install --save pg
 - instalando biblioteca postGre
+
+### npm install --save sequelize
+- instalacao da bibilioteca seqielize ORM que substitui o PG
