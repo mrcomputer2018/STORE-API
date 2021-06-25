@@ -2,7 +2,7 @@ import Sequelize from "sequelize";
 import db from "../repositories/db.js";
 
 //* Defimindo a classe
-const Client = db.define('suppliers', {
+const Supplier = db.define('suppliers', {
     supplierId: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
