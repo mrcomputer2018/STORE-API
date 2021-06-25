@@ -1,4 +1,3 @@
-import { connect } from "./db.js"
 //* Importando Modelo
 import Client from "../models/client.model.js";
 
@@ -48,7 +47,7 @@ async function updateClient(client) {
            }
        });
        return await getClient(client.clientId);
-       
+
     } catch (err) {
         throw err;
     }
