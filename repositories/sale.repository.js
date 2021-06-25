@@ -35,7 +35,7 @@ async function getSales () {
         //* pegando toda a lista de produtos
         return res.rows;
 
-    } catch (error) {
+    } catch (err) {
        
         throw err;
 
@@ -56,7 +56,7 @@ async function getSalesByProductId(productId) {
         //* pegando toda a lista de produtos
         return res.rows;
 
-    } catch (error) {
+    } catch (err) {
        
         throw err;
 

@@ -35,7 +35,7 @@ async function getSuppliers () {
         //* pegando toda a lista de fornecedores
         return res.rows;
 
-    } catch (error) {
+    } catch (err) {
        
         throw err;
 
