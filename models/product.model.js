@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import db from "../repositories/db.js";
 //* importando supplier para usar no belongsTo
-import Supplier from "./supplier.model.js";
+import Supplier from "../supplier.model.js";
 
 //* Defimindo a classe
 const Product = db.define('products', {
