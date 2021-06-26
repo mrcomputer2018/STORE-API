@@ -7,7 +7,7 @@ const Client = db.define('clients', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        promaryKey: true
+        primaryKey: true
     },
     name: {
         type: Sequelize.STRING,

@@ -11,7 +11,7 @@ const Sale = db.define('sales', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        promaryKey: true
+        primaryKey: true
     },
     value: {
         type: Sequelize.DOUBLE,

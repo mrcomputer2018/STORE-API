@@ -9,7 +9,7 @@ const Product = db.define('products', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        promaryKey: true
+        primaryKey: true
     },
     name: {
         type: Sequelize.STRING,
