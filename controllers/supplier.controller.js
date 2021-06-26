@@ -4,17 +4,26 @@ import SupplierService from "../services/supplier.service.js";
 async function createSupplier(req, res, next) {
     try {
         let supplier = req.body;
+        const errors = [];
 
         //* validacoes
         if (!supplier.name || !supplier.cnpj || !supplier.phone || !supplier.email || !supplier.address) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Name, cnpj, phone e address sao obrigatorios");
+            errors.push("Name, cnpj, phone e address sao obrigatorios");
         }
         //* Cria no banco de dados e retorna o suppliere criado
         supplier = await SupplierService.createSupplier(supplier);
         res.send(supplier);
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
         //* convertendo em string e devolvendo no log o body
         logger.info(`POST /supplier - ${JSON.stringify(supplier)}`);
+
     } catch (err) {
         //* Jogando ppara o proximo middleware
         next(err);
@@ -58,10 +67,17 @@ async function deleteSupplier(req, res, next) {
 async function updateSupplier(req, res, next) {
     try {
         let supplier = req.body;
+        const errors = [];
 
         if (!supplier.supplier_id || !supplier.name || !supplier.cnpj || !supplier.phone || !supplier.email || !supplier.address) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("supplier_id, name, cnpj, phone e address sao obrigatorios");
+            errors.push("supplier_id, name, cnpj, phone e address sao obrigatorios");
+        }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
         }
        
         supplier = await SupplierService.updateSupplier(supplier);

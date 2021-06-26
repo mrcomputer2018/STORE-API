@@ -4,12 +4,20 @@ import SaleService from "../services/sale.service.js";
 async function createSale(req, res, next) {
     try {
         let sale = req.body;
+        const errors = [];
 
         //* validacoes
         if (!sale.value || !sale.date || !sale.client_id || !sale.product_id) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Value, date, value, client_id e product_id sao obrigatorios");
+           errors.push("Value, date, value, client_id e product_id sao obrigatorios");
         }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
         //* Cria no banco de dados e retorna o Salee criado
         sale = await SaleService.createSale(sale);
         res.send(sale);
@@ -58,10 +66,17 @@ async function deleteSale(req, res, next) {
 async function updateSale(req, res, next) {
     try {
         let sale = req.body;
+        const errors = [];
 
         if (!sale.sale_id || !sale.value || !sale.date || !sale.client_id || !sale.product_id) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Sale_id, value, date, client_id e product_id sao obrigatorios");
+            errors.push("Sale_id, value, date, client_id e product_id sao obrigatorios");
+        }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
         }
        
         sale = await SaleService.updateSale(sale);

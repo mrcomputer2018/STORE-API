@@ -4,12 +4,20 @@ import ClientService from "../services/client.service.js";
 async function createClient(req, res, next) {
     try {
         let client = req.body;
+        const errors = [];
 
         //* validacoes
         if (!client.name || !client.cpf || !client.phone || !client.email || !client.address) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Name, cpf, phone e address sao obrigatorios");
+            errors.push("Name, cpf, phone e address sao obrigatorios");
         }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+        
         //* Cria no banco de dados e retorna o cliente criado
         client = await ClientService.createClient(client);
         res.send(client);
@@ -58,12 +66,19 @@ async function deleteClient(req, res, next) {
 async function updateClient(req, res, next) {
     try {
         let client = req.body;
+        const errors = [];
 
         if (!client.clientId || !client.name || !client.cpf || !client.phone || !client.email || !client.address) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("ClientId, name, cpf, phone e address sao obrigatorios");
+            errors.push("ClientId, name, cpf, phone e address sao obrigatorios");
         }
-       
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
         client = await ClientService.updateClient(client);
         res.send(client);
         

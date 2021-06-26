@@ -9,7 +9,7 @@ async function createProduct(product) {
         //* cria e retorna o objeto
         return await ProductRepository.insertProduct(product);
     }
-    
+
     errors.push("O supplier_id informado não existe");
 
     if (errors.length !== 0) {
@@ -32,10 +32,18 @@ async function deleteProduct(id) {
 }
 
 async function updateProduct(product) {
+    const errors = [];
+    
     if(await SupplierReposytory.getSupplier(product.supplier_id)) {
         return await ProductRepository.updateProduct(product);
     }
-    throw new Error("O supplier_id informado não existe");
+
+    errors.push("O supplier_id informado não existe");
+    //* Se tiver error
+   if (errors.length !== 0) {
+    //* Mandando para index.js o erro
+    throw errors;
+ }
 }
 
 export default {

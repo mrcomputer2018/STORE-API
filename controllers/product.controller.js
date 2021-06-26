@@ -4,12 +4,20 @@ import ProductService from "../services/product.service.js";
 async function createProduct(req, res, next) {
     try {
         let product = req.body;
+        const errors = [];
 
         //* validacoes
         if (!product.name || !product.description || !product.value || !product.stock || !product.supplier_id) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Name, descripption, value, stock e supplier_id sao obrigatorios");
+            errors.push("Name, descripption, value, stock e supplier_id sao obrigatorios");
         }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
         //* Cria no banco de dados e retorna o Producte criado
         product = await ProductService.createProduct(product);
         res.send(product);
@@ -58,10 +66,17 @@ async function deleteProduct(req, res, next) {
 async function updateProduct(req, res, next) {
     try {
         let product = req.body;
+        const errors = [];
 
         if (!product.product_id || !product.name || !product.description || !product.value || !product.stock || !product.supplier_id) {
             //* Informa mensagem de erro pro usuario
-            throw new Error("Product_id, name, descripption, value e supplier_id sao obrigatorios");
+            errors.push("Product_id, name, descripption, value e supplier_id sao obrigatorios");
+        }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
         }
        
         product = await ProductService.updateProduct(product);
