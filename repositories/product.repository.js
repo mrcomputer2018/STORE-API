@@ -35,7 +35,7 @@ async function getProducts () {
         //* pegando toda a lista de produtos
         return res.rows;
 
-    } catch (error) {
+    } catch (err) {
        
         throw err;
 
