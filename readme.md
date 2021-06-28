@@ -24,3 +24,6 @@ podermos usar o sequelize
 
 ### npm install --save sequelize
 - instalacao da bibilioteca seqielize ORM que substitui o PG
+
+### npm install --save mongodb
+- instalacao do modulo para utilizacao do mongodb
