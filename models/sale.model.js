@@ -2,7 +2,7 @@ import Sequelize from "sequelize";
 import db from "../repositories/db.js";
 //* importando supplier para usar no belongsTo
 import Client from "./client.model.js";
-import Supplier from "./supplier.model.js";
+import Product from "./product.model.js";
 
 
 //* Defimindo a classe
@@ -25,8 +25,8 @@ const Sale = db.define('sales', {
 
 //* Criando a associacao para incluir o objeto de supplierID
 //* belongsTo - ele pertence a alguem
-Product.belongsTo(Client, { foreignKey: "clientId"});
-Product.belongsTo(Supplier, { foreignKey: "supplierId"});
+Sale.belongsTo(Client, { foreignKey: "clientId"});
+Sale.belongsTo(Product, { foreignKey: "productId"});
 
 //* Exportando classe
 export default Sale;
