@@ -7,7 +7,7 @@ async function createSale(req, res, next) {
         const errors = [];
 
         //* validacoes
-        if (!sale.value || !sale.date || !sale.client_id || !sale.product_id) {
+        if (!sale.value || !sale.date || !sale.clientId || !sale.productId) {
             //* Informa mensagem de erro pro usuario
            errors.push("Value, date, value, client_id e product_id sao obrigatorios");
         }
@@ -32,7 +32,7 @@ async function createSale(req, res, next) {
 async function getSales(req, res,next) {
     try {
         //* Devolvendo pro cliente
-        res.send(await SaleService.getSales(req.query.product_id));
+        res.send(await SaleService.getSales(req.query.productId));
 
         logger.info("GET /sales");
 
@@ -68,7 +68,7 @@ async function updateSale(req, res, next) {
         let sale = req.body;
         const errors = [];
 
-        if (!sale.sale_id || !sale.value || !sale.date || !sale.client_id || !sale.product_id) {
+        if (!sale.saleId || !sale.value || !sale.date || !sale.clientId || !sale.productId) {
             //* Informa mensagem de erro pro usuario
             errors.push("Sale_id, value, date, client_id e product_id sao obrigatorios");
         }
