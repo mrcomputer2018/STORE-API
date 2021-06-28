@@ -1,5 +1,8 @@
 //* Importando Modelo
 import Sale from "../models/sale.model.js";
+//* Importando o model para inculde funcionar
+import Product from "../models/product.model.js";
+import Client from "../models/client.model.js"
 
 async function insertSale(sale) {
     
@@ -13,44 +16,36 @@ async function insertSale(sale) {
 
 //* Metodo buscar fornecedores
 async function getSales () {
-    const conn = await connect();s
-
+   
     try {
-        const sql = "SELECT * FROM sales";
-        
-        const res = await conn.query(sql);
-        //* pegando toda a lista de produtos
-        return res.rows;
+        //* Include para trazer o objeto da chave estrangeira
+        return await Sale.findAll({
+            include: [
+                {
+                    model: Product
+                },
+                {
+                    model: Client
+                }
+            ]
+        });
 
     } catch (err) {
-       
         throw err;
 
-    } finally {
-
-        conn.release();
-    }
+    } 
 }
 
 async function getSalesByProductId(productId) {
-    const conn = await connect();
-
+   
     try {
-        const sql = "SELECT * FROM sales WHERE product_id = $1";
-        const values = [productId];
-
-        const res = await conn.query(sql, values);
-        //* pegando toda a lista de produtos
-        return res.rows;
+        
 
     } catch (err) {
        
         throw err;
 
-    } finally {
-
-        conn.release();
-    }
+    } 
 }
 
 
