@@ -74,15 +74,13 @@ async function getSale(id) {
 }
 
 async function deleteSale(id) {
-    const conn = await connect();
-
+   
     try {
-        const sql = "DELETE FROM sales WHERE sale_id = $1";
-
-        const values = [id];
-
-        await conn.query(sql, values);
-        //* nao coloca RES pois nao esta esperando nenhum retorno
+        await Sale.destroy({
+            where: {
+                saleId: id
+            }
+        });
 
     } catch (err) {
         throw err;
