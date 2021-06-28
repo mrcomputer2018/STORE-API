@@ -52,11 +52,12 @@ async function updateProduct(product) {
     }
 
     errors.push("O supplier_id informado não existe");
+    
     //* Se tiver error
    if (errors.length !== 0) {
     //* Mandando para index.js o erro
     throw errors;
- }
+    }
 }
 
 export default {
