@@ -6,7 +6,7 @@ import SaleRepository from "../repositories/sale.repository.js"
 async function createProduct(product) {
     const errors = [];
 
-    if(await SupplierReposytory.getSupplier(product.supplier_id)) {
+    if(await SupplierReposytory.getSupplier(product.supplierId)) {
         //* cria e retorna o objeto
         return await ProductRepository.insertProduct(product);
     }
@@ -47,7 +47,7 @@ async function deleteProduct(id) {
 async function updateProduct(product) {
     const errors = [];
     
-    if(await SupplierReposytory.getSupplier(product.supplier_id)) {
+    if(await SupplierReposytory.getSupplier(product.supplierId)) {
         return await ProductRepository.updateProduct(product);
     }
 
