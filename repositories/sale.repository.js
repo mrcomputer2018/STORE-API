@@ -55,24 +55,14 @@ async function getSalesByProductId(productId) {
 
 
 async function getSale(id) {
-    const conn = await connect();
-
+    
     try {
-        const sql = "SELECT * FROM sales WHERE sale_id = $1";
-
-        const values = [id];
-
-        const res = await conn.query(sql, values);
-
-         return res.rows[0];
+        return await Sale.findByPk(id);
 
     } catch (err) {
         throw err;
 
-    } finally {
-        conn.release();
-
-    }
+    } 
 }
 
 async function deleteSale(id) {
