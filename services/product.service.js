@@ -1,6 +1,7 @@
 //? Service faz o tratamentoo da regra de negocio / validacoes
 import ProductRepository from "../repositories/product.repository.js";
 import SupplierReposytory from "../repositories/supplier.repository.js";
+import SaleRepository from "../repositories/sale.repository.js"
 
 async function createProduct(product) {
     const errors = [];
@@ -27,6 +28,18 @@ async function getProduct(id) {
 }
 
 async function deleteProduct(id) {
+    const errprs = [];
+    const sales = await SaleRepository.getSalesByProductId(id);
+
+    if (sate) {
+      errors.push("Não é possivel excluir este produto. Ja esxiste uma venda vinculada.");
+    }
+
+    if (errors.length !== 0) {
+        //* Mandando para index.js o erro
+        throw errors;
+     }
+
     //* nao coloca return pois nao esta esperando nenhum retorno
     await ProductRepository.deleteProduct(id);
 }
