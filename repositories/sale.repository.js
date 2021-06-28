@@ -22,10 +22,10 @@ async function getSales () {
         return await Sale.findAll({
             include: [
                 {
-                    model: Product
+                    model: Client
                 },
                 {
-                    model: Client
+                    model: Product
                 }
             ]
         });
@@ -43,7 +43,15 @@ async function getSalesByProductId(productId) {
             {
                 where: {
                     productId: productId
-                }
+                },
+                include: [
+                    {
+                        model: Client
+                    },
+                    {
+                        model: Product
+                    }
+                ]
             }
         );
 
