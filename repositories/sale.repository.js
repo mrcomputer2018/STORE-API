@@ -39,11 +39,16 @@ async function getSales () {
 async function getSalesByProductId(productId) {
    
     try {
-        
+        return await Sale.findAll(
+            {
+                where: {
+                    productId: productId
+                }
+            }
+        );
 
     } catch (err) {
-       
-        throw err;
+       throw err;
 
     } 
 }
