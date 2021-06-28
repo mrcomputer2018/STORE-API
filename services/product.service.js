@@ -31,7 +31,7 @@ async function deleteProduct(id) {
     const errors = [];
     const sales = await SaleRepository.getSalesByProductId(id);
 
-    if (sate) {
+    if (sales.length > 0) {
       errors.push("Não é possivel excluir este produto. Ja esxiste uma venda vinculada.");
     }
 

@@ -32,7 +32,7 @@ async function createSale(req, res, next) {
 async function getSales(req, res, next) {
     try {
         //* Devolvendo pro cliente
-        res.send(await SaleService.getSales(req.query.productId));
+        res.send(await SaleService.getSales(req.query.productId, req.query.supplierId));
 
         logger.info("GET /sales");
 

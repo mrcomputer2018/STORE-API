@@ -37,9 +37,13 @@ async function createSale(sale) {
     
 }
 
-async function getSales(productId) {
+async function getSales(productId, supllierID) {
     if(productId){
         return await SaleRepository.getSalesByProductId(productId);
+    }
+    if(supplierId) {
+        //* Retorna vendas de um determinado fornecedor
+        return await SaleRepository.getSalesBySupplierId(SupplierId);
     }
     
     return await SaleRepository.getSales();

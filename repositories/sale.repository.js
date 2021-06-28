@@ -61,6 +61,27 @@ async function getSalesByProductId(productId) {
     } 
 }
 
+//* Retorna vendas de um determinado fornecedor
+//* Vamos fazer um Join
+async function getSalesBySupplierId(supplierId){
+    try {
+        return await Sale.findAll(
+            {
+                include: [
+                    {
+                        model: Product,
+                        where: {
+                            //* SupplierID e igual ao parametro
+                            supplierId: supplierId
+                        }
+                    }
+                ]
+            }
+        );
+    } catch (err) {
+        throw err;
+    }
+}
 
 async function getSale(id) {
     
@@ -119,6 +140,7 @@ export default {
     insertSale,
     getSales,
     getSalesByProductId,
+    getSalesBySupplierId,
     getSale,
     deleteSale, 
     updateSale 
