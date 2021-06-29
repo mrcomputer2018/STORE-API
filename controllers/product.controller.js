@@ -95,7 +95,7 @@ async function createProductInfo(req, res, next) {
         let productInfo  = req.body;
 
         if(!productInfo.rpoductId) {
-            push.errors("ProductId é obrigatorio.");
+            errors.push("ProductId é obrigatorio.");
         }
 
         //* Se tiver error
