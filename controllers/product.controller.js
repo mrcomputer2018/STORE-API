@@ -92,9 +92,9 @@ async function updateProduct(req, res, next) {
 async function createProductInfo(req, res, next) {
     try {
         const errors = [];
-        let productInfo  = req.body;
+        let productInfo = req.body;
 
-        if(!productInfo.rpoductId) {
+        if(!productInfo.productId) {
             errors.push("ProductId é obrigatorio.");
         }
 
