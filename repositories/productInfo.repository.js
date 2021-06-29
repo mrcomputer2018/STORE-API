@@ -35,4 +35,4 @@ async function updateProductInfo(productInfo) {
     }
 }
 
-export default { createProductInfo };
+export default { createProductInfo, updateProductInfo };
