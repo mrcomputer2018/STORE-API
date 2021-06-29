@@ -42,7 +42,7 @@ async function getProductInfo(productId){
         await client.connect();
         await client.db("store").collection("productInfo").findOne(
             {
-                productid
+                productId
             }
         )
     } catch (err) {
