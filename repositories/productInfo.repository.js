@@ -35,4 +35,21 @@ async function updateProductInfo(productInfo) {
     }
 }
 
-export default { createProductInfo, updateProductInfo };
+async function getProductInfo(productId){
+    const client = getClient();
+
+    try {
+        await client.connect();
+        await client.db("store").collection("productInfo").findOne(
+            {
+                productid
+            }
+        )
+    } catch (err) {
+        throw err;
+    } finally {
+        await client.close();
+    }
+}
+
+export default { createProductInfo, updateProductInfo, getProductInfo };

@@ -21,7 +21,8 @@ async function getProducts () {
 async function getProduct(id) {
     try {
         //* acha pela PK
-        return await Product.findByPk(id);
+        //* RAW converte para JSON
+        return await Product.findByPk(id, { raw: true });
     } catch (err) {
         throw err;
     }

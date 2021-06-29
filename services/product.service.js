@@ -25,7 +25,12 @@ async function getProducts() {
 }
 
 async function getProduct(id) {
-    return await ProductRepository.getProduct(id);
+    const product = await ProductRepository.getProduct(id);
+
+    //* Converter para inteiro o ID devido ao mongodb
+    product.info = await ProductInfoRepository.getProductInfo(parseInt(id));
+
+    return product; 
 }
 
 async function deleteProduct(id) {
