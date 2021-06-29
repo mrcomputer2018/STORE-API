@@ -113,6 +113,30 @@ async function createProductInfo(req, res, next) {
     }
 }
 
+async function updateProductInfo(req, res, next) {
+    try {
+        const errors = [];
+        let productInfo = req.body;
+
+        if(!productInfo.productId) {
+            errors.push("ProductId é obrigatorio.");
+        }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
+       await ProductService.updateProductInfo(productInfo);
+        res.end();
+        logger.info(`PUT /product/info - ${JSON.stringify(productInfo)}`);
+
+    } catch (err) {
+        next (err);
+    }
+}
+
 //* Exportacoes
 export default {
     createProduct,
@@ -120,5 +144,6 @@ export default {
     getProduct,
     deleteProduct,
     updateProduct,
-    createProductInfo
+    createProductInfo,
+    updateProductInfo
 }

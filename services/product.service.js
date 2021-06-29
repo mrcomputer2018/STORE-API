@@ -65,11 +65,16 @@ async function createProductInfo(productInfo) {
     await ProductInfoRepository.createProductInfo(productInfo);
 }
 
+async function updateProductInfo(productInfo) {
+    await ProductInfoRepository.updateProductInfo(productInfo);
+}
+
 export default {
     createProduct,
     getProducts,
     getProduct,
     deleteProduct,
     updateProduct,
-    createProductInfo
+    createProductInfo,
+    updateProductInfo
 }
