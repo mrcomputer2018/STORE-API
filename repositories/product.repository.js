@@ -54,6 +54,7 @@ async function updateProduct(product) {
     }
 }
 
+
 export default {
     insertProduct,
     getProducts,

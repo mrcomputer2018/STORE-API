@@ -52,4 +52,16 @@ async function getProductInfo(productId){
     }
 }
 
-export default { createProductInfo, updateProductInfo, getProductInfo };
+async function createReview(review, productId){
+    try {
+        //* encontro o productId
+        const productInfo = await getProductInfo(productInfo);
+        productInfo.reviews.push(review);
+        await updateProductInfo(productInfo)
+
+    } catch (err) {
+        throw err;
+    } 
+}
+
+export default { createProductInfo, updateProductInfo, getProductInfo, createReview };
