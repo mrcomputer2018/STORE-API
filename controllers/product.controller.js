@@ -89,11 +89,36 @@ async function updateProduct(req, res, next) {
     }
 }
 
+async function createProductInfo(req, res, next) {
+    try {
+        const errors = [];
+        let productInfo  = req.body;
+
+        if(!productInfo.rpoductId) {
+            push.errors("ProductId é obrigatorio.");
+        }
+
+        //* Se tiver error
+        if (errors.length !== 0) {
+            //* Mandando para index.js o erro
+            throw errors;
+        }
+
+       await ProductService.createProductInfo(productInfo);
+        res.end();
+        logger.info(`POST /product/info - ${JSON.stringify(productInfo)}`);
+
+    } catch (err) {
+        next (err);
+    }
+}
+
 //* Exportacoes
 export default {
     createProduct,
     getProducts,
     getProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    createProductInfo
 }

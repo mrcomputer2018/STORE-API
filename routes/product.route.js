@@ -18,5 +18,8 @@ router.delete("/:id", ProductController.deleteProduct);
 //* Rota PUT
 router.put("/", ProductController.updateProduct);
 
+//* Rota POST
+router.post("/info", ProductController.createProductInfo);
+
 //* Exportando o roteador
 export default router;

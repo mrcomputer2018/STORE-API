@@ -1,7 +1,8 @@
 //? Service faz o tratamentoo da regra de negocio / validacoes
 import ProductRepository from "../repositories/product.repository.js";
 import SupplierReposytory from "../repositories/supplier.repository.js";
-import SaleRepository from "../repositories/sale.repository.js"
+import SaleRepository from "../repositories/sale.repository.js";
+import ProductInfoRepository from "../repositories/productInfo.repository.js";
 
 async function createProduct(product) {
     const errors = [];
@@ -60,10 +61,15 @@ async function updateProduct(product) {
     }
 }
 
+async function createProductInfo(productInfo) {
+    await ProductInfoRepository.createProductInfo(productInfo);
+}
+
 export default {
     createProduct,
     getProducts,
     getProduct,
     deleteProduct,
-    updateProduct
+    updateProduct,
+    createProductInfo
 }
