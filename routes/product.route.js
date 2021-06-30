@@ -22,7 +22,7 @@ router.put("/", ProductController.updateProduct);
 router.post("/info", ProductController.createProductInfo);
 
 //* Rota PUT INFO
-router.put("/info", ProductController.createProductInfo);
+router.put("/info", ProductController.updateProductInfo);
 
 //* Rota Review
 router.post("/review", ProductController.createReview);

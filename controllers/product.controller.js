@@ -43,9 +43,8 @@ async function getProducts(req, res,next) {
 
 async function getProduct(req, res, next) {
     try {
-        await ProductService.getProduct(req.params.id);
-        //* termina sem dar retorno
-        res.end();
+        res.send(await ProductService.getProduct(req.params.id));
+        
         logger.info("GET /product/:id");
 
     } catch (err) {
