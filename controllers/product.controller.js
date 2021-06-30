@@ -143,7 +143,7 @@ async function createReview(req, res, next){
         let params = req.body;
 
         if (!params.productId || !params.review) {
-            errors.push("ProductId e reviews são obrigatorios.")
+           errors.push("ProductId e reviews são obrigatorios.")
         }
         //* Se tiver error
         if (errors.length !== 0) {
@@ -152,7 +152,7 @@ async function createReview(req, res, next){
         }
 
         await ProductService.createReview(params.review, params.productId);
-        res.end();
+        res.json("Review inserida com sucesso!!!");
 
     } catch (err) {
         next(err);
