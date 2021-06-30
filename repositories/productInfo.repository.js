@@ -57,7 +57,7 @@ async function createReview(review, productId){
         //* encontro o productId
         const productInfo = await getProductInfo(productId);
         productInfo.reviews.push(review);
-        await updateProductInfo(productInfo)
+        await updateProductInfo(productInfo);
 
     } catch (err) {
         throw err;
