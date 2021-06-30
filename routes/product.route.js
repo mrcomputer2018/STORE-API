@@ -24,5 +24,8 @@ router.post("/info", ProductController.createProductInfo);
 //* Rota PUT INFO
 router.put("/info", ProductController.createProductInfo);
 
+//* Rota Review
+router.post("/review", ProductController.createReview);
+
 //* Exportando o roteador
 export default router;
