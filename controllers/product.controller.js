@@ -163,7 +163,7 @@ async function deleteReview(req, res, next) {
     try {
         await ProductService.deleteReview(req.params.id, req.params.index);
         logger.info(`DELETE /product/${req.params.id}/review/${req.params.index}`);
-        res.end();
+        res.json("Review deletada com sucesso!!!");
     } catch (err) {
         next(err);
     }
