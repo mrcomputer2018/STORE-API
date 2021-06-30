@@ -64,4 +64,46 @@ async function createReview(review, productId){
     } 
 }
 
-export default { createProductInfo, updateProductInfo, getProductInfo, createReview };
+async function deleteReview(productId, index) {
+    try {
+        const productInfo = await getProductInfo(productId);
+        productInfo.reviews.splice(index, 1);
+        await updateProductInfo(productInfo);
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function getProductsInfo() {
+    const client = getClient();
+    try {
+        await client.connect();
+        return await client.db("store").collection("productInfo").find({}).toArray();
+    } catch (err) {
+        throw err;
+    } finally {
+        await client.close();
+    }
+}
+
+async function deleteProductInfo(productId) {
+    const client = getClient();
+    try {
+        await client.connect();
+        return await client.db("store").collection("productInfo").deleteOne({ productId });
+    } catch (err) {
+        throw err;
+    } finally {
+        await client.close();
+    }
+}
+
+export default { 
+                    createProductInfo, 
+                    updateProductInfo, 
+                    getProductInfo, 
+                    createReview,
+                    deleteReview,
+                    getProductsInfo,
+                    deleteProductInfo
+                }
