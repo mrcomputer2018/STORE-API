@@ -40,11 +40,8 @@ async function getProductInfo(productId){
 
     try {
         await client.connect();
-        await client.db("store").collection("productInfo").findOne(
-            {
-                productId
-            }
-        )
+        await client.db("store").collection("productInfo").findOne({productId})
+        
     } catch (err) {
         throw err;
     } finally {
