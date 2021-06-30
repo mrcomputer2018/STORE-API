@@ -27,5 +27,8 @@ router.put("/info", ProductController.createProductInfo);
 //* Rota Review
 router.post("/review", ProductController.createReview);
 
+router.delete("/:id/review/:index", ProductController.deleteReview);
+router.delete("/info/:id", ProductController.deleteProductInfo);
+
 //* Exportando o roteador
 export default router;
