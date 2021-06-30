@@ -52,11 +52,11 @@ async function getProductInfo(productId){
     }
 }
 
-async function createReview(reviews, productId){
+async function createReview(review, productId){
     try {
         //* encontro o productId
         const productInfo = await getProductInfo(productId);
-        productInfo.reviews.push(reviews);
+        productInfo.reviews.push(review);
         await updateProductInfo(productInfo)
 
     } catch (err) {
