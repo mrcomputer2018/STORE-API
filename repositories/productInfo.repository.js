@@ -11,7 +11,7 @@ async function createProductInfo(productInfo) {
         //* Agora podemos trabalhar com ProductInfo
         productInfo = new ProductInfo(productInfo);
         await productInfo.save();
-
+       
     } catch (err) {
         throw err;
     }

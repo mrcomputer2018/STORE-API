@@ -104,7 +104,7 @@ async function createProductInfo(req, res, next) {
         }
 
        await ProductService.createProductInfo(productInfo);
-        res.end();
+        res.json("Product info criada com sucesso!!!");
         logger.info(`POST /product/info - ${JSON.stringify(productInfo)}`);
 
     } catch (err) {
@@ -128,7 +128,7 @@ async function updateProductInfo(req, res, next) {
         }
 
        await ProductService.updateProductInfo(productInfo);
-        res.end();
+       res.json("Product info atualizada com sucesso!!!");
         logger.info(`PUT /product/info - ${JSON.stringify(productInfo)}`);
 
     } catch (err) {
