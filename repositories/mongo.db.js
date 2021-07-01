@@ -1,8 +1,8 @@
-import mongodb from "mongodb";
+import mongoose from "mongoose";
 
-function getClient() {
+async function connect() {
     const uri = "mongodb+srv://proeja:m0411n0304@cluster0.g01er.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-    return new mongodb.MongoClient(uri);
+    return await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
 }
 
-export { getClient };
+export { connect };
