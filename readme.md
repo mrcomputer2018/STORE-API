@@ -27,3 +27,6 @@ podermos usar o sequelize
 
 ### npm install --save mongodb
 - instalacao do modulo para utilizacao do mongodb
+
+### npm install --save mongoose
+- Instalacao do modulo de validacao
